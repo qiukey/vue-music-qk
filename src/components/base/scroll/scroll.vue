@@ -17,9 +17,14 @@ export default {
     click: {
       type: Boolean,
       default: true
+    },
+    probeType: {
+      type: Number,
+      default: 0
     }
   },
-  setup(props) {
+  emits: ['scroll'],
+  setup(props, { emit }) {
     const rootRef = ref(null)
     const scroll = ref(null)
 
@@ -28,6 +33,11 @@ export default {
         observeDOM: true,
         ...props
       })
+      if (props.probeType > 0) {
+        scroll.value.on('scroll', (pos) => {
+          emit('scroll', pos)
+        })
+      }
     })
 
     onUnmounted(() => {

@@ -53,7 +53,7 @@ export default {
 </script>
 <style lang="scss" scoped>
   .recommend {
-    // position: fixed;
+    position: fixed;
     width: 100%;
     top: 88px;
     bottom: 0;
